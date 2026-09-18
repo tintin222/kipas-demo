@@ -301,6 +301,9 @@ export const satinalmaKosusu = (): AjanKosusu<SatinalmaCiktisi> => {
     adimlar: adimlariYaz(c),
     bulgular: bulgulariYaz(c),
     ayrinti: c,
+    // Bulguların toplamı değil: vade kazancı parti değişiminin kazancının
+    // içinde, ikisi toplanınca aynı para iki kez sayılıyor.
+    vitrin: { tutar: karsilastirma.kazancTl, etiket: "önlenen maliyet" },
     ozetMetrikler: [
       {
         etiket: "Önerilen partinin gerçek maliyeti",

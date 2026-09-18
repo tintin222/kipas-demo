@@ -269,13 +269,18 @@ function bulgulariYaz(c: RaporlamaCiktisi): Finding<RaporlamaBulguTipi>[] {
       detay,
       etkiTL: s.etkiTL,
       etkiTipi: s.tip === "stok-sismesi" ? "maliyet" : "risk",
+      // Etiket, yanındaki tutarın TAM OLARAK ne olduğunu söylemeli. Önceki
+      // hâli ciro sapmasına "plana göre eksik ciro", stok sapmasına "ek
+      // bağlanan işletme sermayesi" diyordu; oysa `etkiTL` ikisinde de o
+      // büyüklük değil, onun aylık kâr karşılığı. Ekranda 364 mn TL eksik
+      // cironun yanında 60,8 mn TL yazıyordu ve etiket yanlıştı.
       etkiEtiketi:
         s.tip === "marj-daralmasi"
           ? "Dönemde kaybedilen brüt kâr"
           : s.tip === "ciro-plan-alti"
-            ? "Plana göre eksik ciro"
+            ? "Eksik cironun taşıdığı katkı payı"
             : s.tip === "stok-sismesi"
-              ? "Ek bağlanan işletme sermayesi"
+              ? "Bağlanan sermayenin aylık finansman maliyeti"
               : "Boşta kalan kapasitenin katkı payı",
       baglam: { sirketId: s.sirketId, donem: c.donem },
       oneri: s.oneri,
@@ -293,6 +298,14 @@ export const raporlamaKosusu = (): AjanKosusu<RaporlamaCiktisi> => {
     adimlar: adimlariYaz(c),
     bulgular: bulgulariYaz(c),
     ayrinti: c,
+    // Ekrandaki "oluşan aylık kâr etkisi" ile aynı hesap: boşta kalan kapasite
+    // fırsat maliyeti, gerçekleşmiş kayıp değil, o yüzden dışarıda.
+    vitrin: {
+      tutar: sapmalar
+        .filter((s) => s.tip !== "kapasite-dusuk")
+        .reduce((t, s) => t + s.etkiTL, 0),
+      etiket: "aylık kâr etkisi",
+    },
     ozetMetrikler: [
       {
         etiket: "Holding cirosu",

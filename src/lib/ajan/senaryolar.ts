@@ -1,4 +1,5 @@
 import type { AjanSenaryosu } from "@/lib/ajan/cekirdek";
+import { bakimSenaryosu } from "@/senaryolar/bakim/senaryo";
 import { raporlamaSenaryosu } from "@/senaryolar/raporlama/senaryo";
 import { satinalmaSenaryosu } from "@/senaryolar/satinalma/senaryo";
 import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
@@ -11,18 +12,8 @@ import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
 export const SENARYOLAR: AjanSenaryosu[] = [
   uretimPlanlamaSenaryosu as AjanSenaryosu,
   satinalmaSenaryosu as AjanSenaryosu,
+  bakimSenaryosu as AjanSenaryosu,
   raporlamaSenaryosu as AjanSenaryosu,
-  {
-    id: "bakim",
-    ad: "Duruş ve Bakım Önceliklendirme",
-    ozet:
-      "Plansız duruşları ve arıza kayıtlarını toplayıp bakım işlerini üretim kaybına göre sıraya koyar.",
-    birim: "Nişasta Fabrikası",
-    ikon: "BK",
-    kokUrl: "/bakim",
-    durum: "planlanan",
-    bolumler: [],
-  },
 ];
 
 export const senaryoBul = (id: string): AjanSenaryosu | undefined =>

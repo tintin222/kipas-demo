@@ -3,6 +3,10 @@ export const tl = (n: number): string =>
 
 export const tlKisa = (n: number): string => {
   const mutlak = Math.abs(n);
+  // Milyar basamağı: holding cirosu milyonla yazılınca "6021,0 mn TL" gibi
+  // okunmayan bir rakam çıkıyordu.
+  if (mutlak >= 1_000_000_000)
+    return `${(n / 1_000_000_000).toFixed(1).replace(".", ",")} mlr TL`;
   if (mutlak >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace(".", ",")} mn TL`;
   if (mutlak >= 1_000) return `${Math.round(n / 1000).toLocaleString("tr-TR")} bin TL`;
   return `${Math.round(n)} TL`;
