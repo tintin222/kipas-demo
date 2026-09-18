@@ -58,11 +58,29 @@ export interface AjanKarari {
   onerilen: string;
 }
 
+/**
+ * Senaryonun kart üzerinde gösterilmek üzere kendi seçtiği tek rakam.
+ *
+ * Tanımsız bırakılırsa kart bulguların TL etkisini toplar; bağımsız kalemleri
+ * olan senaryolarda (ör. ayrı ayrı geciken siparişler) doğru davranış budur.
+ * Ama her senaryoda doğru değil: satın almada vade kazancı zaten parti
+ * değişiminin içinde, üretim kaybında randıman kaybı ile duruş farklı tabanda
+ * ölçülüyor. O senaryolar toplanınca şişen bir rakam yerine kendi manşetlerini
+ * veriyor; ekranda görünen rakamla kartta görünen rakam da böylece aynı oluyor.
+ */
+export interface AjanVitrini {
+  tutar: number;
+  /** Rakamın ne olduğu, kartta tutarın hemen ardına yazılır. */
+  etiket: string;
+}
+
 export interface AjanKosusu<TAyrinti = unknown> {
   adimlar: AgentStep[];
   bulgular: Finding[];
   ozetMetrikler: AjanMetrigi[];
   kararlar: AjanKarari[];
+  /** Kart manşeti; yoksa bulgu toplamı kullanılır. */
+  vitrin?: AjanVitrini;
   /** Senaryoya özel çıktı (ör. üretim programı). */
   ayrinti: TAyrinti;
 }
