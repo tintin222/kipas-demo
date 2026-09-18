@@ -775,7 +775,7 @@ export const bulgulariCikar = (
         etkiTL: acik * urun.listeFiyatTon,
         etkiTipi: "risk",
         etkiEtiketi: "Sevk edilemeyecek sipariş tutarı",
-        sku: d.sku,
+        baglam: { sku: d.sku },
         oneri: `${Math.round(d.netIhtiyacTon)} ton üretim programa alınmalı.`,
       });
     }
@@ -797,8 +797,7 @@ export const bulgulariCikar = (
         etkiTL: r.cezaTL,
         etkiTipi: duzeldi ? "tasarruf" : "risk",
         etkiEtiketi: duzeldi ? "Önerilen programla önlenen ceza" : "Sözleşme cezası",
-        siparisId: r.siparis.id,
-        sku: r.siparis.sku,
+        baglam: { siparisId: r.siparis.id, sku: r.siparis.sku },
         oneri: duzeldi
           ? "Önerilen sıralamada termin zamanında karşılanıyor."
           : "Üretim sırası değişse de kapasite yetmiyor; miktar bölünmeli ya da müşteriyle termin revize edilmeli.",
@@ -813,8 +812,7 @@ export const bulgulariCikar = (
         etkiTL: r.siparis.ton * r.siparis.fiyatTon * r.siparis.gecikmeCezasiGunluk,
         etkiTipi: "risk",
         etkiEtiketi: "Bir günlük gecikmenin cezası",
-        siparisId: r.siparis.id,
-        sku: r.siparis.sku,
+        baglam: { siparisId: r.siparis.id, sku: r.siparis.sku },
         oneri: "Hat duruşu olursa ilk etkilenecek sipariş; takipte tutulmalı.",
       });
     }
@@ -836,7 +834,7 @@ export const bulgulariCikar = (
           etkiTL: (bagli * YILLIK_FINANSMAN * UFUK_GUN) / 365 + k.gecisMaliyeti,
           etkiTipi: "tasarruf",
           etkiEtiketi: `${Math.round(bagli).toLocaleString("tr-TR")} TL sermayenin ${UFUK_GUN} günlük finansman ve geçiş maliyeti`,
-          sku: k.sku,
+          baglam: { sku: k.sku },
           oneri: "Bu kampanya programdan çıkarılıp kapasite açığı olan ürüne verilmeli.",
         });
       }
@@ -858,7 +856,7 @@ export const bulgulariCikar = (
           etkiTL: lot.finansmanTL,
           etkiTipi: "maliyet",
           etkiEtiketi: "Bugüne kadar oluşan finansman maliyeti",
-          sku: d.sku,
+          baglam: { sku: d.sku, lotNo: lot.lotNo },
           oneri:
             rafOrani < 0.45
               ? "Spot satış ya da mevcut müşteriye erken sevk teklifiyle eritilmeli."
@@ -904,7 +902,7 @@ export const bulgulariCikar = (
     etkiTL: enIyi.tutar,
     etkiTipi: "risk",
     etkiEtiketi: "En yüksek marjlı siparişin katkısı",
-    siparisId: enIyi.siparis.id,
+    baglam: { siparisId: enIyi.siparis.id },
     oneri: "Kapasite darboğazında düşük marjlı siparişin termini müşteriyle yeniden konuşulmalı.",
   });
 

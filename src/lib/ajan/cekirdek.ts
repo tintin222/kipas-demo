@@ -29,8 +29,11 @@ export interface Finding<TTip extends string = string> {
   /** Etkinin cinsi: kaçabilecek ciro, önlenebilir maliyet ya da hâlihazırda oluşan maliyet. */
   etkiTipi: "risk" | "tasarruf" | "maliyet";
   etkiEtiketi: string;
-  sku?: string;
-  siparisId?: string;
+  /**
+   * Bulgunun bağlı olduğu kayıtlar (ör. { sku, siparisId }). Senaryo kendi
+   * anahtarlarını koyar; ileride bulgudan ilgili ekrana atlamak için kullanılır.
+   */
+  baglam?: Record<string, string>;
   oneri: string;
 }
 
