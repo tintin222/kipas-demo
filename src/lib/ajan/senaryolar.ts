@@ -1,4 +1,5 @@
 import type { AjanSenaryosu } from "@/lib/ajan/cekirdek";
+import { raporlamaSenaryosu } from "@/senaryolar/raporlama/senaryo";
 import { satinalmaSenaryosu } from "@/senaryolar/satinalma/senaryo";
 import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
 
@@ -10,6 +11,7 @@ import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
 export const SENARYOLAR: AjanSenaryosu[] = [
   uretimPlanlamaSenaryosu as AjanSenaryosu,
   satinalmaSenaryosu as AjanSenaryosu,
+  raporlamaSenaryosu as AjanSenaryosu,
   {
     id: "bakim",
     ad: "Duruş ve Bakım Önceliklendirme",
@@ -18,17 +20,6 @@ export const SENARYOLAR: AjanSenaryosu[] = [
     birim: "Nişasta Fabrikası",
     ikon: "BK",
     kokUrl: "/bakim",
-    durum: "planlanan",
-    bolumler: [],
-  },
-  {
-    id: "raporlama",
-    ad: "Holding Yönetim Raporu",
-    ozet:
-      "Şirketlerden gelen üretim, maliyet ve stok verisini tek yönetim ekranında toplar ve sapmaları yazıya döker.",
-    birim: "Holding",
-    ikon: "YR",
-    kokUrl: "/raporlama",
     durum: "planlanan",
     bolumler: [],
   },
