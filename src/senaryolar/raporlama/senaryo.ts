@@ -361,6 +361,7 @@ export const raporlamaKosusu = (): AjanKosusu<RaporlamaCiktisi> => {
 export const raporlamaSenaryosu: AjanSenaryosu<RaporlamaCiktisi> = {
   id: "raporlama",
   ad: "Holding Yönetim Raporu",
+  kisaAd: "Yönetim Raporu",
   ozet:
     "Şirketlerden gelen ciro, maliyet, üretim ve stok verisini toplar; sapmaları TL etkisine göre sıralar, en büyüğünü bir alt kırılıma indirir ve yönetim özetini yazar.",
   birim: "Holding",

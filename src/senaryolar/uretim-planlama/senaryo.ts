@@ -75,6 +75,7 @@ export const uretimPlanlamaKosusu = (): AjanKosusu<AjanCiktisi> => {
 export const uretimPlanlamaSenaryosu: AjanSenaryosu<AjanCiktisi> = {
   id: "uretim-planlama",
   ad: "Stok, Sipariş ve Üretim Planlama",
+  kisaAd: "Üretim Planlama",
   ozet:
     "Siparişleri, mamul stoğunu ve hat kapasitesini tek ekranda birleştirir; termini riske giren siparişleri çıkarır ve üç haftalık üretim programını gerekçesiyle önerir.",
   birim: "Nişasta Fabrikası",

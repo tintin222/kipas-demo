@@ -381,6 +381,7 @@ export const satinalmaKosusu = (): AjanKosusu<SatinalmaCiktisi> => {
 export const satinalmaSenaryosu: AjanSenaryosu<SatinalmaCiktisi> = {
   id: "satinalma",
   ad: "Mısır Alım ve Tedarikçi Verimi",
+  kisaAd: "Mısır Alım",
   ozet:
     "Açık mısır tekliflerini geri kazanılabilir nişasta tonu başına gerçek maliyete çevirir, tedarikçi beyanını siciliyle düzeltir ve tahsis yazısını hazırlar.",
   birim: "Nişasta Fabrikası",

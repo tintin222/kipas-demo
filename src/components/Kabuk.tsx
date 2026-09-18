@@ -28,7 +28,7 @@ export function UstBar() {
               href={s.kokUrl}
               className={yol.startsWith(s.kokUrl) ? "etkin" : undefined}
             >
-              {s.ad}
+              {s.kisaAd ?? s.ad}
             </Link>
           ))}
           <span className="demo-etiketi">Demo verisi</span>

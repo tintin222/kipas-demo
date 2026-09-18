@@ -328,6 +328,7 @@ export const bakimKosusu = (): AjanKosusu<BakimCiktisi> => {
 export const bakimSenaryosu: AjanSenaryosu<BakimCiktisi> = {
   id: "bakim",
   ad: "Üretim Kaybı ve Hat Uyarısı",
+  kisaAd: "Üretim Kaybı",
   ozet:
     "Giren mısırdan çıkması gereken nişasta ile fiilen çıkanı karşılaştırır, farkı proses adımlarına dağıtır, vardiya notlarıyla çapraz kontrol eder ve iş kalemi açar.",
   birim: "Nişasta Fabrikası",
