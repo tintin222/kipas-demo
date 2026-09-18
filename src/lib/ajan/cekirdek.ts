@@ -70,6 +70,11 @@ export interface AjanKosusu<TAyrinti = unknown> {
 export interface AjanSenaryosu<TAyrinti = unknown> {
   id: string;
   ad: string;
+  /**
+   * Üst navigasyondaki kısa etiket. Tanımsızsa `ad` kullanılır; senaryo sayısı
+   * arttıkça tam adlar üst barı taşırdığı için eklendi.
+   */
+  kisaAd?: string;
   ozet: string;
   birim: string;
   ikon: string;
