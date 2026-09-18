@@ -1,4 +1,5 @@
 import type { AjanSenaryosu } from "@/lib/ajan/cekirdek";
+import { satinalmaSenaryosu } from "@/senaryolar/satinalma/senaryo";
 import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
 
 /**
@@ -8,17 +9,7 @@ import { uretimPlanlamaSenaryosu } from "@/senaryolar/uretim-planlama/senaryo";
  */
 export const SENARYOLAR: AjanSenaryosu[] = [
   uretimPlanlamaSenaryosu as AjanSenaryosu,
-  {
-    id: "satinalma",
-    ad: "Mısır Alım ve Tedarikçi Verimi",
-    ozet:
-      "Lot ve tedarikçi bazında gerçek randımanı, piyasa fiyatını ve stok seviyesini izleyip alım zamanını önerir.",
-    birim: "Nişasta Fabrikası",
-    ikon: "MA",
-    kokUrl: "/satinalma",
-    durum: "planlanan",
-    bolumler: [],
-  },
+  satinalmaSenaryosu as AjanSenaryosu,
   {
     id: "bakim",
     ad: "Duruş ve Bakım Önceliklendirme",
