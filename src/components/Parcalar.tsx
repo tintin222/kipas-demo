@@ -1,4 +1,5 @@
-import type { Finding, ScheduledCampaign } from "@/lib/types";
+import type { Finding } from "@/lib/ajan/cekirdek";
+import type { ScheduledCampaign } from "@/lib/types";
 import { UFUK_GUN } from "@/data/seed";
 import { tl, tlKisa } from "@/lib/bicim";
 

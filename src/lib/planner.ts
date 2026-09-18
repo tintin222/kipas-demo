@@ -13,15 +13,15 @@ import {
   hatBul,
   urunBul,
 } from "@/data/seed";
+import type { AgentStep, Finding } from "@/lib/ajan/cekirdek";
 import type {
-  AgentStep,
   Campaign,
-  Finding,
   LineId,
   LineResult,
   Order,
   OrderResult,
   PlanHedefi,
+  PlanlamaBulguTipi,
   PlanResult,
   ScheduledCampaign,
 } from "@/lib/types";
@@ -757,8 +757,8 @@ const tarihKisa = (iso: string): string => {
 export const bulgulariCikar = (
   mevcut: PlanResult,
   oneri: PlanResult,
-): Finding[] => {
-  const bulgular: Finding[] = [];
+): Finding<PlanlamaBulguTipi>[] => {
+  const bulgular: Finding<PlanlamaBulguTipi>[] = [];
   const durum = stokDurumu();
 
   /* 1. Stoğu açık siparişleri karşılamayan ürünler */
@@ -924,7 +924,7 @@ export interface AjanCiktisi {
   oneri: PlanResult;
   /** Hiçbir siparişin gecikmemesini şart koşan alternatif senaryo. */
   alternatif: PlanResult;
-  bulgular: Finding[];
+  bulgular: Finding<PlanlamaBulguTipi>[];
   program: Record<LineId, Campaign[]>;
   alternatifProgram: Record<LineId, Campaign[]>;
   denenenAlternatif: number;

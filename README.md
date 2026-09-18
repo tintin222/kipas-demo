@@ -70,9 +70,9 @@ gününde yapılması, mısır alımı ve randıman tarafının kapsam dışı o
 ## Yapı
 
 ```
-src/lib/ajan/          Ortak ajan çatısı: senaryo sözleşmesi ve senaryo listesi
+src/lib/ajan/          Ortak ajan sözlüğü (AgentStep, Finding), senaryo sözleşmesi ve listesi
 src/lib/planner.ts     Planlama motoru: simülasyon, optimizasyon, bulgular
-src/lib/types.ts       Alan modeli
+src/lib/types.ts       Planlama alanının modeli (ürün, sipariş, program, plan sonucu)
 src/data/seed.ts       Örnek fabrika verisi (ürün, hat, stok, sipariş, geçiş matrisi)
 src/senaryolar/…       Senaryoya özel ekran mantığı ve durum yönetimi
 src/app/…              Next.js App Router sayfaları
@@ -87,6 +87,9 @@ Kabuk, navigasyon ve ajan paneli senaryodan bağımsızdır. Yeni bir iş senary
    uygula: `bolumler` navigasyonu, `calistir()` ise ajan koşusunu
    (`adimlar`, `bulgular`, `ozetMetrikler`, `kararlar`) döndürür.
 2. `src/lib/ajan/senaryolar.ts` listesine ekle.
+   Bulgu türü senaryoya özeldir: kendi birliğini tanımlayıp
+   `Finding<KendiBulguTipin>` kullan. Ortak bileşenler `Finding<string>`
+   aldığı için paylaşılan dosyaları değiştirmen gerekmez.
 3. Sayfaları `src/app/<senaryo>/` altına koy.
 
 Üst navigasyon, senaryo kartları ve alt sekmeler kendiliğinden çalışır.

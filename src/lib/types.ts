@@ -106,34 +106,14 @@ export interface PlanResult {
   ortalamaBagliSermayeTL: number;
 }
 
-export type FindingSeverity = "kritik" | "uyari" | "bilgi";
-
-export interface Finding {
-  id: string;
-  tip:
-    | "stok-yetersiz"
-    | "termin-riski"
-    | "fazla-uretim"
-    | "yavas-stok"
-    | "raf-omru"
-    | "sira-optimizasyonu"
-    | "karlilik";
-  seviye: FindingSeverity;
-  baslik: string;
-  detay: string;
-  /** Finansal etki (TL). */
-  etkiTL: number;
-  /** Etkinin cinsi: kaçabilecek ciro, önlenebilir maliyet ya da hâlihazırda oluşan maliyet. */
-  etkiTipi: "risk" | "tasarruf" | "maliyet";
-  etkiEtiketi: string;
-  sku?: string;
-  siparisId?: string;
-  oneri: string;
-}
+/** Bu senaryonun ürettiği bulgu türleri. */
+export type PlanlamaBulguTipi =
+  | "stok-yetersiz"
+  | "termin-riski"
+  | "fazla-uretim"
+  | "yavas-stok"
+  | "raf-omru"
+  | "sira-optimizasyonu"
+  | "karlilik";
 
 export type PlanHedefi = "maliyet" | "sifir-gecikme";
-
-export interface AgentStep {
-  baslik: string;
-  detay: string;
-}
